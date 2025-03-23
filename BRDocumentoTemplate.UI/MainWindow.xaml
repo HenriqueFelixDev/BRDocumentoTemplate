@@ -51,7 +51,28 @@
                 </StackPanel>
             </TabItem>
 
-            <TabItem Header="Formulário" />
+            <TabItem Header="Formulário">
+                <StackPanel>
+                    <ItemsControl ItemsSource="{Binding Propriedades}">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel />
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel>
+                                    <TextBlock Text="{Binding Nome}" />
+                                    <TextBox Text="{Binding Valor}" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+
+                    <Button x:Name="buttonGerarDocumento" Content="Gerar Documento" />
+                </StackPanel>
+            </TabItem>
         </TabControl>
 
         <RichTextBox x:Name="richText" Grid.Column="2" />
