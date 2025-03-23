@@ -44,7 +44,10 @@
                         </ItemsControl.ItemTemplate>
                     </ItemsControl>
 
-                    <Button>Adicionar Propriedade</Button>
+                    <Button
+                        x:Name="buttonAdicionarPropriedade"
+                        Click="buttonAdicionarPropriedade_Click"
+                        Content="Adicionar Propriedade" />
                 </StackPanel>
             </TabItem>
 

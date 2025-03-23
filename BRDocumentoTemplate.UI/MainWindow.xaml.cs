@@ -8,9 +8,17 @@ namespace BRDocumentoTemplate.UI;
 /// </summary>
 public partial class MainWindow : Window
 {
+    private readonly PropriedadeViewModel propriedadeViewModel;
+
     public MainWindow()
     {
         InitializeComponent();
-        DataContext = new PropriedadeViewModel();
+        propriedadeViewModel = new PropriedadeViewModel();
+        DataContext = propriedadeViewModel;
+    }
+
+    private void buttonAdicionarPropriedade_Click(object sender, RoutedEventArgs e)
+    {
+        new DialogAdicionarPropriedade(propriedadeViewModel).ShowDialog();
     }
 }

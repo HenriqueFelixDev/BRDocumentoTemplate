@@ -1,0 +1,40 @@
+﻿<Window
+    x:Class="BRDocumentoTemplate.UI.Views.Propriedades.DialogAdicionarPropriedade"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:BRDocumentoTemplate.UI.Views.Propriedades"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:propriedadesViews="clr-namespace:BRDocumentoTemplate.UI.Views.Propriedades"
+    Title="Adicionar Propriedade"
+    Width="250"
+    Height="200"
+    WindowStartupLocation="CenterScreen"
+    mc:Ignorable="d">
+    <d:Window.DataContext>
+        <d:DesignInstance IsDesignTimeCreatable="False" Type="{x:Type propriedadesViews:PropriedadeViewModel}" />
+    </d:Window.DataContext>
+
+    <StackPanel Margin="16" VerticalAlignment="Center">
+        <TextBlock Text="Nome da Propriedade" />
+        <TextBox x:Name="textNomePropriedade" />
+
+        <Border Height="8" />
+
+        <StackPanel Orientation="Horizontal">
+            <Button
+                x:Name="buttonCancelar"
+                Click="buttonCancelar_Click"
+                Content="Cancelar" />
+
+            <Border Width="8" />
+
+            <Button
+                x:Name="buttonAdicionar"
+                Click="buttonAdicionar_Click"
+                Command="{Binding AdicionarPropriedadeCommand}"
+                CommandParameter="{Binding Path=Text, ElementName=textNomePropriedade}"
+                Content="Adicionar" />
+        </StackPanel>
+    </StackPanel>
+</Window>
