@@ -14,6 +14,20 @@
         <d:DesignInstance IsDesignTimeCreatable="False" Type="{x:Type propriedadesViews:PropriedadeViewModel}" />
     </d:Window.DataContext>
 
+    <Window.Resources>
+        <Style x:Key="formatTextStyle" TargetType="{x:Type Button}">
+            <Setter Property="FontFamily" Value="Palatino Linotype" />
+            <Setter Property="Width" Value="30" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="CommandTarget" Value="{Binding ElementName=mainRTB}" />
+        </Style>
+
+        <Style x:Key="formatImageStyle" TargetType="{x:Type Button}">
+            <Setter Property="Width" Value="30" />
+            <Setter Property="CommandTarget" Value="{Binding ElementName=richText}" />
+        </Style>
+    </Window.Resources>
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*" />
@@ -21,7 +35,12 @@
             <ColumnDefinition Width="2*" />
         </Grid.ColumnDefinitions>
 
-        <TabControl>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <TabControl Grid.RowSpan="2">
             <TabItem Header="Propriedades">
                 <StackPanel>
                     <ItemsControl ItemsSource="{Binding Propriedades}">
@@ -75,7 +94,124 @@
             </TabItem>
         </TabControl>
 
-        <RichTextBox x:Name="richText" Grid.Column="2">
+        <ToolBar Grid.Column="2">
+            <Button
+                Command="ApplicationCommands.Cut"
+                Style="{StaticResource formatImageStyle}"
+                ToolTip="Recortar">
+                Cut
+            </Button>
+            <Button
+                Command="ApplicationCommands.Copy"
+                Style="{StaticResource formatImageStyle}"
+                ToolTip="Copiar">
+                Copy
+            </Button>
+            <Button
+                Command="ApplicationCommands.Paste"
+                Style="{StaticResource formatImageStyle}"
+                ToolTip="Colar">
+                Paste
+            </Button>
+            <Button
+                Command="ApplicationCommands.Undo"
+                Style="{StaticResource formatImageStyle}"
+                ToolTip="Desfazer">
+                Undo
+            </Button>
+            <Button
+                Command="ApplicationCommands.Redo"
+                Style="{StaticResource formatImageStyle}"
+                ToolTip="Refazer">
+                Redo
+            </Button>
+
+            <Button
+                Command="EditingCommands.ToggleBold"
+                Style="{StaticResource formatTextStyle}"
+                ToolTip="Negrito">
+                <TextBlock FontWeight="Bold">B</TextBlock>
+            </Button>
+            <Button
+                Command="EditingCommands.ToggleItalic"
+                Style="{StaticResource formatTextStyle}"
+                ToolTip="Itálico">
+                <TextBlock FontStyle="Italic" FontWeight="Bold">I</TextBlock>
+            </Button>
+            <Button
+                Command="EditingCommands.ToggleUnderline"
+                Style="{StaticResource formatTextStyle}"
+                ToolTip="Sublinhado">
+                <TextBlock FontWeight="Bold" TextDecorations="Underline">U</TextBlock>
+            </Button>
+            <Button
+                Command="EditingCommands.IncreaseFontSize"
+                Style="{StaticResource formatImageStyle}"
+                ToolTip="Aumentar Letra">
+                Grow Font
+            </Button>
+            <Button
+                Command="EditingCommands.DecreaseFontSize"
+                Style="{StaticResource formatImageStyle}"
+                ToolTip="Diminuir Letra">
+                Shrink Font
+            </Button>
+
+            <Button
+                Command="EditingCommands.ToggleBullets"
+                Style="{StaticResource formatImageStyle}"
+                ToolTip="Lista Não Numerada (Círculos)">
+                List Bullets
+            </Button>
+            <Button
+                Command="EditingCommands.ToggleNumbering"
+                Style="{StaticResource formatImageStyle}"
+                ToolTip="Lista Numerada">
+                List Numbering
+            </Button>
+            <Button
+                Command="EditingCommands.AlignLeft"
+                Style="{StaticResource formatImageStyle}"
+                ToolTip="Alinhar à Esquerda">
+                Left Justify
+            </Button>
+            <Button
+                Command="EditingCommands.AlignCenter"
+                Style="{StaticResource formatImageStyle}"
+                ToolTip="Alinhar ao Centro">
+                Center Justify
+            </Button>
+            <Button
+                Command="EditingCommands.AlignRight"
+                Style="{StaticResource formatImageStyle}"
+                ToolTip="Alinhar à Direita">
+                Right Justify
+            </Button>
+            <Button
+                Command="EditingCommands.AlignJustify"
+                Style="{StaticResource formatImageStyle}"
+                ToolTip="Justificar Texto">
+                Full Justify
+            </Button>
+            <Button
+                Command="EditingCommands.IncreaseIndentation"
+                Style="{StaticResource formatImageStyle}"
+                ToolTip="Aumentar Indentação">
+                Increase Indentation
+            </Button>
+            <Button
+                Command="EditingCommands.DecreaseIndentation"
+                Style="{StaticResource formatImageStyle}"
+                ToolTip="Diminuir Indentação">
+                Decrease Indentation
+            </Button>
+
+        </ToolBar>
+
+        <RichTextBox
+            x:Name="richText"
+            Grid.Row="1"
+            Grid.Column="2">
             <RichTextBox.ContextMenu>
                 <ContextMenu>
                     <MenuItem
