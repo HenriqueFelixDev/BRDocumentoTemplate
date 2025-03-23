@@ -1,4 +1,5 @@
-﻿using BRDocumentoTemplate.UI.Views.Propriedades;
+﻿using BRDocumentoTemplate.UI.Repositories;
+using BRDocumentoTemplate.UI.Views.Propriedades;
 using System.Windows;
 
 namespace BRDocumentoTemplate.UI;
@@ -13,7 +14,7 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
-        propriedadeViewModel = new PropriedadeViewModel();
+        propriedadeViewModel = new PropriedadeViewModel(new InMemoryPropriedadeRepository());
         DataContext = propriedadeViewModel;
     }
 
