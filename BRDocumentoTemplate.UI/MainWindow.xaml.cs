@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using BRDocumentoTemplate.UI.Views.Propriedades;
+using System.Windows;
 
 namespace BRDocumentoTemplate.UI;
 
@@ -10,5 +11,6 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
+        DataContext = new PropriedadeViewModel();
     }
 }
