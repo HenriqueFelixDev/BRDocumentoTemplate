@@ -75,6 +75,24 @@
             </TabItem>
         </TabControl>
 
-        <RichTextBox x:Name="richText" Grid.Column="2" />
+        <RichTextBox x:Name="richText" Grid.Column="2">
+            <RichTextBox.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Adicionar Propriedade" ItemsSource="{Binding Propriedades}">
+                        <MenuItem.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Tag="{Binding Id}" Text="{Binding Nome}" />
+                            </DataTemplate>
+                        </MenuItem.ItemTemplate>
+                    </MenuItem>
+
+                    <Separator />
+
+                    <MenuItem Command="ApplicationCommands.Copy" />
+                    <MenuItem Command="ApplicationCommands.Cut" />
+                    <MenuItem Command="ApplicationCommands.Paste" />
+                </ContextMenu>
+            </RichTextBox.ContextMenu>
+        </RichTextBox>
     </Grid>
 </Window>
