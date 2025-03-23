@@ -7,7 +7,7 @@ namespace BRDocumentoTemplate.UI.Views.Propriedades;
 
 public partial class PropriedadeViewModel : ObservableObject
 {
-    public ObservableCollection<PropriedadeTemplate> Propriedades { get; set; } = [];
+    public ObservableCollection<PropriedadeTemplate> Propriedades { get; } = [];
 
 
     [RelayCommand]
